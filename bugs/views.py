@@ -1,13 +1,19 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
+
 from . forms import BugForm,SignUpForm
 
 # Create your views here.
+
+@login_required
 def home(request):
     return render(request,'home.html')
 
+@login_required
 def about(request):
     return render(request,'about.html')
 
+@login_required
 def report(request):
     if request.method == 'POST':
         form=BugForm(request.POST)
@@ -18,6 +24,7 @@ def report(request):
         form=BugForm()
     return render(request,'report.html',{'form':form})
 
+@login_required
 def success(request):
     return render(request,'success.html')
 

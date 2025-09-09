@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bugs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bugs',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -125,6 +125,11 @@ STATICFILES_DIR=[BASE_DIR/'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGOUT_REDIRECT_URL ='login'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login' 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = ["bootstrap5"]
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
