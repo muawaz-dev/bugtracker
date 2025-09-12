@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username','first_name','last_name', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
 class BugForm(forms.ModelForm):
     class Meta:
         model=Bug
-        fields=['name','bug_type','description','number_of_occurences']
+        fields=['bug_type','description','number_of_occurences']
             

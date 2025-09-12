@@ -1,17 +1,84 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Page</title>
+    <title>Report Bug</title>
+    <link rel="stylesheet" href="{% static 'report.css' %}">
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-        <button type='submit'>
-            Submit
-        </button>
-    </form>
+    <div class="bug-form-container">
+        <h2 class="form-title" >Report Bug</h2>
+        
+        {% if form.errors %}
+            <div class="form-errors">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <div>{{ field|capfirst }}: {{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post" class="bug-form">
+            {% csrf_token %}
+            
+            
+            <div class="form-group">
+                <label for="{{ form.bug_type.id_for_label }}" class="form-label">
+                    Bug Type
+                </label>
+                <select name="{{ form.bug_type.name }}" 
+                        id="{{ form.bug_type.id_for_label }}"
+                        class="form-input form-select"
+                        required>
+                    <option value="">Select bug type...</option>
+                    {% for choice in form.bug_type.field.choices %}
+                        <option value="{{ choice.0 }}" 
+                                {% if form.bug_type.value == choice.0 %}selected{% endif %}>
+                            {{ choice.1 }}
+                        </option>
+                    {% endfor %}
+                </select>
+                {% if form.bug_type.errors %}
+                    <div class="field-error">{{ form.bug_type.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}" class="form-label">
+                    Description
+                </label>
+                <textarea name="{{ form.description.name }}" 
+                          id="{{ form.description.id_for_label }}"
+                          class="form-input form-textarea"
+                          placeholder="Describe the bug in detail..."
+                          required>{{ form.description.value|default:'' }}</textarea>
+                {% if form.description.errors %}
+                    <div class="field-error">{{ form.description.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.number_of_occurences.id_for_label }}" class="form-label">
+                    Number of Occurrences
+                </label>
+                <input type="number" 
+                       name="{{ form.number_of_occurences.name }}" 
+                       id="{{ form.number_of_occurences.id_for_label }}"
+                       class="form-input form-number"
+                       value="{{ form.number_of_occurences.value|default:'' }}"
+                       min="1"
+                       placeholder="1"
+                       required>
+                {% if form.number_of_occurences.errors %}
+                    <div class="field-error">{{ form.number_of_occurences.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Bug Report</button>
+        </form>
+    </div>
 </body>
 </html>

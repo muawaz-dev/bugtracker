@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 bug_choices=[
     ('gameplay_or_mechanics','Gameplay & Mechanics'),
@@ -14,3 +15,5 @@ class Bug(models.Model):
     bug_type=models.CharField(choices=bug_choices)
     description=models.TextField()
     number_of_occurences=models.IntegerField()
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='bugs')
+

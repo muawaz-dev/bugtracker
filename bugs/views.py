@@ -16,9 +16,12 @@ def about(request):
 @login_required
 def report(request):
     if request.method == 'POST':
+     
         form=BugForm(request.POST)
         if form.is_valid():
-            form.save()
+            report=form.save(commit=False)
+            report.user=request.user
+            report.save()
             return redirect('success')
     else:
         form=BugForm()

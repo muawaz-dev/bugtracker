@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.staticfiles',
+    # 
     'bugs',
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -117,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIR=[BASE_DIR/'static']
 
 # Default primary key field type
@@ -125,11 +127,14 @@ STATICFILES_DIR=[BASE_DIR/'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Authentication Settings
 LOGOUT_REDIRECT_URL ='login'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login' 
 
+# Template packs
 CRISPY_ALLOWED_TEMPLATE_PACKS = ["bootstrap5"]
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+# Email serve settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}{% endblock %} </title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    {% block link %}{% endblock %}
+</head>
+<body>
+    <div>
+        <h1 class='title'>
+            {% block page_title %}{% endblock %}            
+        </h1>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url "home" %}">Home</a></li>
+            <li><a href="{% url "about" %}">About</a></li>
+            <li><a href="{% url "report" %}">Report</a></li>
+            <li><form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+          <button type="submit" style="
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: #4f008fff;
+    text-decoration: underline;
+    cursor: pointer;
+  ">
+    Log out
+  </button>
+        </form>
+        </li>
+        </ul>  
+    </div>
+<div>
+</div>
+<div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
