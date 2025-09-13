@@ -9,16 +9,16 @@
     {% block link %}{% endblock %}
 </head>
 <body>
-    <div>
-        <h1 class='title'>
-            {% block page_title %}{% endblock %}            
-        </h1>
+    <div class='title'>
+    {% block page_title %}{% endblock %}
     </div>
+
+                       
     <div class="navbar">
         <ul>
             <li><a href="{% url "home" %}">Home</a></li>
-            <li><a href="{% url "about" %}">About</a></li>
             <li><a href="{% url "report" %}">Report</a></li>
+            <li><a href="{% url "account" %}">Account</a></li>
             <li><form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
           <button type="submit" style="

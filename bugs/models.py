@@ -11,9 +11,10 @@ bug_choices=[
 
 # Create your models here.
 class Bug(models.Model):
-    name=models.CharField( max_length=50)
     bug_type=models.CharField(choices=bug_choices)
     description=models.TextField()
     number_of_occurences=models.IntegerField()
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='bugs')
+    def __str__(self):
+        return f"{self.user.username.capitalize()} : {self.get_bug_type_display()}"
 

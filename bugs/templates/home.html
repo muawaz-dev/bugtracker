@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home Page{% endblock %}
-{% block page_title %}Welcome To Bugs{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static "home.css" %}">
+{% endblock %}
+{% block page_title %}
+<h1>
+    Welcome To Bugs
+</h1>
+{% endblock %}
 {% block content %}
-Welcome to Bugs, the ultimate destination for gamers and developers dedicated to improving the first-person shooter experience. Our platform is built specifically to identify, document, and resolve bugs that disrupt gameplay in competitive and immersive FPS titles. Whether you're encountering hit registration issues, weapon glitches, map exploits, or frustrating lag spikes, Bugs gives you the tools to report problems with precision and clarity. We believe that great games deserve great performance, and that starts with a community-driven approach to quality assurance. Users can submit detailed bug reports, attach screenshots or gameplay clips, and track the status of their submissions in real time. Developers and testers benefit from organized feedback, smart categorization, and a streamlined dashboard that keeps the debugging process efficient and transparent. By focusing exclusively on FPS games, we understand the unique challenges of fast-paced combat environments and the importance of responsiveness, fairness, and balance. Whether you're a casual player or part of a professional QA team, Bugs is your ally in building smoother, more reliable shooter experiences.
+<div class="content-container">
+<p>Welcome to Bugs, the ultimate destination for gamers and developers dedicated to improving the first-person shooter experience. Our platform is built specifically to identify, document, and resolve bugs that disrupt gameplay in competitive and immersive FPS titles. Whether you're encountering hit registration issues, weapon glitches, map exploits, or frustrating lag spikes, Bugs gives you the tools to report problems with precision and clarity. We believe that great games deserve great performance, and that starts with a community-driven approach to quality assurance. Users can submit detailed bug reports, attach screenshots or gameplay clips, and track the status of their submissions in real time. Developers and testers benefit from organized feedback, smart categorization, and a streamlined dashboard that keeps the debugging process efficient and transparent. By focusing exclusively on FPS games, we understand the unique challenges of fast-paced combat environments and the importance of responsiveness, fairness, and balance. Whether you're a casual player or part of a professional QA team, Bugs is your ally in building smoother, more reliable shooter experiences.</p>
+</div>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path,include
-from django.contrib.auth.views import LoginView,PasswordResetView
+from django.contrib.auth.views import LoginView
 from . import views
 
 urlpatterns = [
@@ -7,8 +7,10 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     path('about/',views.about,name='about'),
     path('report/',views.report,name='report'),
+    path('account/',views.account,name='account'),
     path('success/',views.success,name='success'),
     path('',include('django.contrib.auth.urls')),
     path('sign-up/',views.sign_up,name='sign_up'),
+    path('delete-bug/<int:bug_id>/',views.delete,name='delete')
     
 ]

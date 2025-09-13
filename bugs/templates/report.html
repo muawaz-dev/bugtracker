@@ -1,16 +1,14 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Bug</title>
-    <link rel="stylesheet" href="{% static 'report.css' %}">
-</head>
-<body>
-    <div class="bug-form-container">
-        <h2 class="form-title" >Report Bug</h2>
-        
+{% block link %}
+<link rel="stylesheet" href="{% static 'report.css' %}">
+{% endblock %}
+{% block title %}Bug Report Page{% endblock %}    
+{% block page_title %}
+<h1>Report Bug</h1>
+{% endblock %}
+{% block content %}
+<div class="bug-form-container">       
         {% if form.errors %}
             <div class="form-errors">
                 {% for field, errors in form.errors.items %}
@@ -80,5 +78,7 @@
             <button type="submit" class="submit-btn">Submit Bug Report</button>
         </form>
     </div>
-</body>
-</html>
+
+{% endblock %}
+
+    

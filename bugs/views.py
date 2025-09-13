@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-
+from . models import Bug
 from . forms import BugForm,SignUpForm
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 
@@ -31,6 +33,10 @@ def report(request):
 def success(request):
     return render(request,'success.html')
 
+@login_required
+def account(request):
+    return render(request,'account.html')
+
 def sign_up(request):
     if request.method=='POST':
         form=SignUpForm(request.POST)
@@ -40,3 +46,12 @@ def sign_up(request):
     else:
         form=SignUpForm()
     return render(request,'registration/sign_up.html',{'form':form})
+
+
+def delete(request,bug_id):
+    if request.method=='POST':
+        bug=get_object_or_404(Bug,id=bug_id)
+        bug.delete()
+        return redirect('home')
+    return redirect('account')
+    

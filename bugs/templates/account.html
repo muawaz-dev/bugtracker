@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Account Page{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static "account.css" %}">
+{% endblock %}
+{% block page_title %}
+<h1>
+My Account
+</h1>
+{% endblock %}
+{% block content %}
+<div class="content-container">
+    <div class="account-info">
+        <div class="info-item">
+            <label><h3>Username:</h3></label>
+            <span>{{request.user.username}}</span>
+        </div>
+        <div class="info-item">
+            <label><h3>Email:</h3></label>
+            <span>{{request.user.email}}</span>
+        </div>
+        <div class="info-item">
+            <label><h3>Bugs Reported:</h3></label>
+            <span>
+                {% for bug in request.user.bugs.all %}
+                <h5 style='display:inline'>Bug Id : </h5>{{bug.id}}
+                <br>
+                Bug Type : {{bug.get_bug_type_display}}
+                <br>
+                Bug Description : {{bug.description}}
+                <br>
+                Number of Occurrences : {{bug.number_of_occurences}}
+                <br>
+                <form action="{% url 'delete' bug.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete Bug</button>
+                </form>
+                <br>
+                {% endfor %}
+            </span>
+        </div>        
+    </div>
+</div>
+{% endblock %}
