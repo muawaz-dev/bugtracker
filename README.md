@@ -26,11 +26,11 @@ BugTracker is a full-stack web application built with Django that allows users t
 ##  Installation & Setup
 - Clone the repo
 git clone https://github.com/muawaz-dev/bugtracker.git
-cd bugtracker
+- In terminal:cd bugtracker
 
 - Create virtual environment
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+- source venv/bin/activate  # or venv\Scripts\activate on Windows
 
 - Install dependencies
 pip install -r requirements.txt
